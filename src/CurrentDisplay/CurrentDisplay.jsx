@@ -1,11 +1,10 @@
 const currentDisplay=(props)=>{
     return(
         <div>
-            Current Weather in {props.location.name+", "+props.location.region}
-            <p>Temperature: {props.details.temperature}</p>
-            <p>Humidity: {props.details.humidity}</p>
+            Current Weather in {props.details.city_name+", Timezone: "+props.details.timezone+ ", "+props.details.country_code}
+            <p>Temperature: {props.details.temp}</p>
             <p>Chances of Rain: {props.details.precip}</p>
-            <p>Visibility: {props.details.visibility}</p>
+            <p>Wind Speed: {props.details.wind_spd}</p>
 
         </div>
     )

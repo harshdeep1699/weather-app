@@ -18,7 +18,6 @@ class Forecast extends React.Component
     {
         this.setState({input:e.target.value})
     }
-    buffer
     handlesubmit=()=>
     {
         const get= this.state.check
@@ -27,33 +26,30 @@ class Forecast extends React.Component
         if(this.state.input!==null && this.state.input!=="")
         {
             this.setState({showspinner:true})
-            const url= "http://api.weatherstack.com/forecast?access_key=f538a1da40f4ca952aced4257b3aa4ac&query="+this.state.input
+            const url="https://api.weatherbit.io/v2.0/current?city="+this.state.input+"&key=486f8b690d1e44e28542fd9384f6d268"
             Axios.get(url)
             .then((response,error)=>{
-                 if(response.data.success===false)
+                 if(response.statusText!=="No Content")
                  {
-                    this.setState({input:this.buffer,doRender:false,showerror:true,showspinner:false})
-                    console.log(this.buffer)
+                    this.setState({current:response.data.data[0],input:this.buffer,doRender:true,showerror:false,showspinner:false})
                  }
                     
                 else{
-                    
-                    this.setState({input:this.buffer,current:response.data.current,
-                        doRender:true,
+                    this.setState({input:this.buffer,
+                        doRender:false,
                         location:response.data.location,
-                        showerror:false,
+                        showerror:true,
                         showspinner:false    
                     })
-                }
+                }}
                  
-                })
+                )
         }
     }
     checkEnter=(e)=>{
         if(e.keyCode===13)
         {
         this.handlesubmit()
-        console.log(this.state.input)
         }
     }
     render()
@@ -62,9 +58,10 @@ class Forecast extends React.Component
         let errormsg= null
         let showspin=null
         if(this.state.doRender)
-         currentDisplay=<CurrentDisplay details={this.state.current} location={this.state.location}></CurrentDisplay>
+         currentDisplay=<CurrentDisplay details={this.state.current}></CurrentDisplay>
         if(this.state.showerror)
         errormsg=<h3>Enter valid place</h3>
+
         if(this.state.showspinner)
         showspin=<Spinner></Spinner>
         return(
