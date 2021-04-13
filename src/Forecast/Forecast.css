@@ -1,0 +1,38 @@
+.innerForecast{
+
+}
+.innerForecast button{
+  background-color: #4b778d;
+  color: #d2e69c;
+  padding: 0.9rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  position: absolute;
+  top:8rem;
+  left:50rem;
+  transform: translate(-77%,0);
+}
+.innerForecast button:hover{
+    background-color: #d2e69c; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+.innerForecast input{
+    width: 15%;
+    padding: 0.8rem 1.2rem;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 0.1rem solid #4b778d;
+    background-color: #28b5b5;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    position: absolute;
+    top:2rem;
+    left:52rem;
+    transform: translate(-77%,0);
+}

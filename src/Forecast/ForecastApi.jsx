@@ -2,7 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import CurrentDisplay from '../CurrentDisplay/CurrentDisplay'
 import Spinner from '../spinner/Spinner'
-
+import './Forecast.css'
 
 class Forecast extends React.Component
 {
@@ -45,6 +45,8 @@ class Forecast extends React.Component
                  
                 )
         }
+        else
+        alert("Enter a valid city")
     }
     checkEnter=(e)=>{
         if(e.keyCode===13)
@@ -60,14 +62,14 @@ class Forecast extends React.Component
         if(this.state.doRender)
          currentDisplay=<CurrentDisplay details={this.state.current}></CurrentDisplay>
         if(this.state.showerror)
-        errormsg=<h3>Enter valid place</h3>
+        alert("Enter a valid city")
 
         if(this.state.showspinner)
         showspin=<Spinner></Spinner>
         return(
-            <div>
-                <div>
-                    <input onChange={this.handleChange}
+            <div className='forecast'>
+                <div className='innerForecast'>
+                    <input placeholder="Enter the city" onChange={this.handleChange}
                             onKeyUp={this.checkEnter}
                             className='location'>        
                     </input>
